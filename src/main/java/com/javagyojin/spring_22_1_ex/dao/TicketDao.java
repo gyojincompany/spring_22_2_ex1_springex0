@@ -34,6 +34,21 @@ public class TicketDao {
 			
 			});
 		
+		this.template.update(new PreparedStatementCreator() {
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				// TODO Auto-generated method stub
+				String query="insert into ticket (consumerId, countnum) values (?, ?)";
+				PreparedStatement pstmt = con.prepareStatement(query);
+				pstmt.setString(1, dto.getConumerId());
+				pstmt.setString(2, dto.getAmount() );				
+				
+				return pstmt;
+				}
+			
+			});	
+		
 	}
 	
 }
