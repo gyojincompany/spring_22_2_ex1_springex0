@@ -32,6 +32,10 @@
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
 	</beans:bean>
 	
+	<beans:bean name="dao" class="com.javagyojin.spring_22_1_ex.dao.TicketDao">
+		<beans:property name="template" ref="template"></beans:property>
+	</beans:bean>
+	
 	<context:component-scan base-package="com.javagyojin.spring_22_1_ex" />
 	
 	

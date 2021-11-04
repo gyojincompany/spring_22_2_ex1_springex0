@@ -26,7 +26,7 @@ public class TicketDao {
 				// TODO Auto-generated method stub
 				String query="insert into card (consumerId, amount) values (?, ?)";
 				PreparedStatement pstmt = con.prepareStatement(query);
-				pstmt.setString(1, dto.getConumerId());
+				pstmt.setString(1, dto.getConsumerId());
 				pstmt.setString(2, dto.getAmount() );				
 				
 				return pstmt;
@@ -41,7 +41,7 @@ public class TicketDao {
 				// TODO Auto-generated method stub
 				String query="insert into ticket (consumerId, countnum) values (?, ?)";
 				PreparedStatement pstmt = con.prepareStatement(query);
-				pstmt.setString(1, dto.getConumerId());
+				pstmt.setString(1, dto.getConsumerId());
 				pstmt.setString(2, dto.getAmount() );				
 				
 				return pstmt;

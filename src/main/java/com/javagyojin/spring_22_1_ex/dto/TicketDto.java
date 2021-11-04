@@ -2,14 +2,14 @@ package com.javagyojin.spring_22_1_ex.dto;
 
 public class TicketDto {
 	
-	private String conumerId;
+	private String consumerId;
 	private String amount;
 	
-	public String getConumerId() {
-		return conumerId;
+	public String getConsumerId() {
+		return consumerId;
 	}
-	public void setConumerId(String conumerId) {
-		this.conumerId = conumerId;
+	public void setConsumerId(String consumerId) {
+		this.consumerId = consumerId;
 	}
 	public String getAmount() {
 		return amount;
