@@ -6,18 +6,37 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.javagyojin.spring_22_1_ex.dto.TicketDto;
 
 public class TicketDao {
 
 	JdbcTemplate template;
+	
+	PlatformTransactionManager transactionManager;
 
 	public void setTemplate(JdbcTemplate template) {
 		this.template = template;
 	}
 	
+		
+	public void setTransactionManager(PlatformTransactionManager transactionManager) {
+		this.transactionManager = transactionManager;
+	}
+
+
+
 	public void buyTicket(final TicketDto dto) {
+		
+		TransactionDefinition definition = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(definition);
+		
+		
+		try {
 		
 		this.template.update(new PreparedStatementCreator() {
 			
@@ -47,7 +66,16 @@ public class TicketDao {
 				return pstmt;
 				}
 			
-			});	
+			});
+		
+			transactionManager.commit(status);
+		
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			transactionManager.rollback(status);
+		}
 		
 	}
 	
